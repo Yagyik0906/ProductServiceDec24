@@ -1,21 +1,42 @@
 package com.yagyik.productservicedec24.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.yagyik.productservicedec24.models.Product;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
-@RequestMapping("/product")
+@RequestMapping("/products")
 public class ProductController {
 
-    @GetMapping("/hello/{name}/{noOfTimes}")
-    public String sayHello(@PathVariable("name") String name,@PathVariable("noOfTimes") int noOfTimes){
-        String res="";
-        for(int i=0;i<noOfTimes;i++){
-            String say="Hello "+name+"<br>";
-            res+=say;
-        }
-        return res;
+    @GetMapping("/{id}")
+    public Product getSingleProduct(@PathVariable("id") long id) {
+        return new Product();
+    }
+
+    @GetMapping
+    public List<Product> getAllProducts() {
+        return new ArrayList<Product>();
+    }
+
+    @PostMapping("/{product}")
+    public Product createProduct(@PathVariable("product") Product product) {
+        return new Product();
+    }
+
+    @PatchMapping("/{product}")
+    public void updateProduct(@PathVariable("product") Product product) {
+
+    }
+
+    @PutMapping("/{product}")
+    public void replaceProduct(@PathVariable("product") Product product) {
+
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteProduct(@PathVariable("id") long id) {
+
     }
 }
