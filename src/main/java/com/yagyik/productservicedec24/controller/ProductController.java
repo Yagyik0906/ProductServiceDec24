@@ -1,6 +1,7 @@
 package com.yagyik.productservicedec24.controller;
 
 import com.yagyik.productservicedec24.models.Product;
+import com.yagyik.productservicedec24.service.ProductService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -10,19 +11,25 @@ import java.util.List;
 @RequestMapping("/products")
 public class ProductController {
 
-    @GetMapping("/{id}")
-    public Product getSingleProduct(@PathVariable("id") long id) {
-        return new Product();
+    ProductService productService;
+
+    ProductController(ProductService productService) {
+        this.productService = productService;
+    }
+
+    @GetMapping("/{productId}")
+    public Product getSingleProduct(@PathVariable("productId") long productId) {
+        return productService.getProduct(productId);
     }
 
     @GetMapping
     public List<Product> getAllProducts() {
-        return new ArrayList<Product>();
+        return productService.getAllProduct();
     }
 
-    @PostMapping("/{product}")
-    public Product createProduct(@PathVariable("product") Product product) {
-        return new Product();
+    @PostMapping("")
+    public Product createProduct(@RequestBody Product product) {
+        return productService.createProduct(product);
     }
 
     @PatchMapping("/{product}")

@@ -1,13 +1,21 @@
-package com.yagyik.productservicedec24.models;
+package com.yagyik.productservicedec24.dtos;
 
 
-
-public class Product extends BaseModel {
+public class FakeStoreProductDto {
+    private Long id;
     private String title;
     private Double price;
+    private String category;
     private String description;
     private String image;
-    private Category category;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -25,6 +33,14 @@ public class Product extends BaseModel {
         this.price = price;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -39,13 +55,5 @@ public class Product extends BaseModel {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
     }
 }
