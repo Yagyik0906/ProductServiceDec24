@@ -1,30 +1,27 @@
 package com.yagyik.productservicedec24.models;
 
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
+import lombok.Getter;
 
+@Getter
+@MappedSuperclass
 public class BaseModel {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private long updatedAt;
     private long createdAt;
-
-    public long getId() {
-        return id;
-    }
 
     public void setId(long id) {
         this.id = id;
     }
 
-    public long getUpdatedAt() {
-        return updatedAt;
-    }
-
     public void setUpdatedAt(long updatedAt) {
         this.updatedAt = updatedAt;
-    }
-
-    public long getCreatedAt() {
-        return createdAt;
     }
 
     public void setCreatedAt(long createdAt) {
