@@ -1,13 +1,15 @@
 package com.yagyik.productservicedec24.service;
 
 import com.yagyik.productservicedec24.models.Product;
-import java.util.ArrayList;
+
+import java.util.*;
 
 public interface ProductService {
     Product getProduct(Long productId);
-    ArrayList<Product> getAllProduct();
+    List<Product> getAllProduct();
+    String saveAllProduct(List<Product> products);
     Product createProduct(Product product);
-    void updateProduct(Product product);
-    void deleteProduct(Long productId);
-    void replaceProduct(Product product);
+    Product updateProduct(Product product);
+    String deleteProduct(Long productId);
+    Product replaceProduct(Product product);
 }

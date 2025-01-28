@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class FakeStoreProductService implements ProductService{
     RestTemplate restTemplate;
@@ -21,7 +23,8 @@ public class FakeStoreProductService implements ProductService{
                 "https://fakestoreapi.com/products/" + productId,
                 FakeStoreProductDto.class
         );
-        return convertFakeStoreProductToProduct(fakeStoreProductDto);
+       return convertFakeStoreProductToProduct(fakeStoreProductDto);
+
     }
 
     @Override
@@ -38,6 +41,11 @@ public class FakeStoreProductService implements ProductService{
     }
 
     @Override
+    public String saveAllProduct(List<Product> products) {
+        return "";
+    }
+
+    @Override
     public Product createProduct(Product product) {
         FakeStoreProductDto fakeStoreProductDto=restTemplate.postForObject(
                 "https://fakestoreapi.com/products",
@@ -47,18 +55,21 @@ public class FakeStoreProductService implements ProductService{
     }
 
     @Override
-    public void updateProduct(Product product) {
+    public Product updateProduct(Product product) {
 
+        return product;
     }
 
     @Override
-    public void deleteProduct(Long productId) {
+    public String deleteProduct(Long productId) {
 
+        return null;
     }
 
     @Override
-    public void replaceProduct(Product product) {
+    public Product replaceProduct(Product product) {
 
+        return product;
     }
 
     public Product convertFakeStoreProductToProduct(FakeStoreProductDto fakeStoreProductDto) {
